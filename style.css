@@ -1,0 +1,42 @@
+:root {
+    --c-text: #E6E5EA;
+    --c-button: #A4FFAF;
+    --backg-main-top: #15141C;
+    --backg-main-bottom: #08070C;
+    --backg-cont: #24232B;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background: linear-gradient(var(--backg-main-top), var(--backg-main-bottom));
+    color: var(--c-text);
+    padding: 100px 20%;
+}
+
+h1 {
+    color: rgb(133, 133, 133);
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center ;
+    margin: 0;
+}
+
+img {
+    width: 20px;
+}
+
+.password-container {
+    background-color: var(--backg-cont);
+}
+.param-container {
+    background-color: var(--backg-cont);
+}
+.checkbox-container >* {
+    display: inline-block;
+}
+
+.strength-container {
+    background-color: var(--backg-main-bottom);
+    margin: auto;
+    width: 80%;
+}
