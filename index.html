@@ -18,55 +18,60 @@
     <div class="password-container">
         <strong>P4$5W0rD</strong>
         <button>
-            <img src="images/copy.png">
+            <img src="images/copy.svg">
         </button>
     </div>
 
+<!--------------------------PARAMETERS------------------------------------>
+
     <div class="param-container">
-        <div>
+        <div class="char-length">
             <h2>Character Lenght</h2>
             <span>0</span> 
         </div>
+    
+        <input class="input-range" type="range" min="0" max="15" step="1">
 
-        <input type="range">
+        <div class="checkbox-wrap">
+            <form class="checkbox-container">
+                <input class="checkbox-upper" type="checkbox" id="check1">
+                <label for="check1">Include Uppercase Letters</label>
+            </form>
 
-        <div class="checkbox-container">
-            <input class="checkbox-upper" type="checkbox">
-            <p>Include Uppercase Letters</p>
-        </div>
+            <form class="checkbox-container">
+                <input class="checkbox-lower" type="checkbox" id="check2">
+                <label for="check2">Include Lowercase Letters</label>
+            </form>
 
-        <div class="checkbox-container">
-            <input class="checkbox-lower" type="checkbox">
-            <p>Include Lowercase Letters</p>
-        </div>
+            <form class="checkbox-container">
+                <input class="checkbox-numbers" type="checkbox" id="check3">
+                <label for="check3">Include Numbers</label>
+            </form>
 
-        <div class="checkbox-container">
-            <input class="checkbox-numbers" type="checkbox">
-            <p>Include Numbers</p>
-        </div>
-
-        <div class="checkbox-container">
-            <input class="checkbox-symbols" type="checkbox">
-            <p>Include Symbols</p>
+            <form class="checkbox-container">
+                <input class="checkbox-symbols" type="checkbox" id="check4">
+                <label for="check4">Include Symbols</label>
+            </form>
         </div>
 
         <div class="strength-container">
             <h3>STRENGTH</h3>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="strenght">
+                <strong>MEDIUM</strong>
+                <div class="strenght-box">
+                    <div class="strenght-pow"></div>
+                    <div class="strenght-pow"></div>
+                    <div class="strenght-pow"></div>
+                    <div class="strenght-pow"></div>                    
+                </div>
+
             </div>
         </div>
 
-        <form>
-            <button>
-                GENERATE
-                <img src="images/arrow.png">
-            </button>
-        </form>
-
+        <button id="button-generate">
+            GENERATE
+            <img src="images/arrow.png">
+        </button>        
     </div>
 
     <script src="app.js"></script>
