@@ -22,6 +22,8 @@ h1 {
     margin: 20px 0;
 }
 
+
+
 /*PASSWORD--------------------------------*/
 .container-new-passw {
     align-items: center;
@@ -39,6 +41,22 @@ h1 {
 .container-new-passw img {
     width: 20px;
 }
+
+.copy-button img {
+    vertical-align: middle;
+}
+
+.copy-message {
+    color: var(--c-text);
+    display: inline-block;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0 20px 0 0;
+}
+
+.no-display {
+    display: none;
+}
+
 /*PARAMETERS--------------------------------*/
 /*-------Charcter Length*/
 .container-parameters {
