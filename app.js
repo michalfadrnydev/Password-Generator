@@ -14,7 +14,7 @@ copyButtonElement.addEventListener("click", () => {
         copyMessageElement.classList.remove("no-display");
         setTimeout(() => {
             copyMessageElement.classList.add("no-display");
-          }, "500")
+          }, "800")
     });
 });
 
@@ -32,6 +32,20 @@ inputRangeElement.addEventListener("input", function() {
     spanSymbolsNumberElement.innerHTML = passwInputValue;
     return passwInputValue;
 })
+
+/*Checkboxy*/
+let checkboxUpperElement = document.querySelector(".checkbox-upper");
+let checkboxLowerElement = document.querySelector(".checkbox-lower");
+let checkboxNumbersElement = document.querySelector(".checkbox-numbers");
+let checkboxSymbolsElement = document.querySelector(".checkbox-symbols");
+
+console.dir(checkboxUpperElement);
+
+if (checkboxUpperElement.checked == "true") {
+
+};
+
+
 
 
 
