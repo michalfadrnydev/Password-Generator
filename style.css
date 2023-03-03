@@ -5,18 +5,15 @@
     --backg-main-bottom: #08070C;
     --backg-cont: #24232B;
 }
-
 html {
     height: 100%;
     background: linear-gradient(var(--backg-main-top), var(--backg-main-bottom));
 }
-
 body {
     font-family: 'Roboto Mono', monospace;
     color: var(--c-text);
     padding: 25px 10px;
 }
-
 h1 {
     color: rgb(133, 133, 133);
     font-size: 18px;
@@ -26,66 +23,49 @@ h1 {
 }
 
 /*PASSWORD--------------------------------*/
-.password-container {
+.container-new-passw {
     align-items: center;
-    background-color: var(--backg-cont);
+    background-color: var(--backg-cont);color: #53525A;
     display: flex;
+    font-size: 20px;
     justify-content: space-between;
     margin-bottom: 20px;
     padding: 15px 15px;
 }
-
-.password-container {
-    color: #53525A;
-    font-size: 20px;
-}
-
-.password-container button {
+.container-new-passw button {
     border: none;
     background: none;
 }
-
-.password-container img {
+.container-new-passw img {
     width: 20px;
 }
-
 /*PARAMETERS--------------------------------*/
-
 /*-------Charcter Length*/
-.param-container {
+.container-parameters {
     background-color: var(--backg-cont);
     padding: 15px 15px;
 }
-
-.char-length {
+.box-passw-length {
     align-items: center;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
 }
-
-.char-length h2 {
+.box-passw-length h2 {
     margin:0;
+    font-size: 16px;
 }
-
-.char-length span {
+.box-passw-length span {
     color: var(--c-button);
     font-size: 25px;
 }
-
-.param-container h2 {
-    font-size: 16px;
-}
-
 /*-------range input*/
-
 .input-range {
     -webkit-appearance: none;
     background: #15141C;
     height: 8px;
     width: 100%;
 }
-
 .input-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 25px;
@@ -93,21 +73,17 @@ h1 {
     background: #fff;
     border-radius: 1rem;
 }
-
 /*-------checkboxes*/
 .checkbox-wrap {
     padding: 25px 0;
 }
-
 .checkbox-container {
     align-items: center;
     display: flex;
 }
-
 .checkbox-container input {
     margin-right: 25px;
 }
-
 /*
 .checkbox-container input {
     -webkit-appearance: none;

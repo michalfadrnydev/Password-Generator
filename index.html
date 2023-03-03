@@ -15,7 +15,7 @@
 <body>
     <h1>Password Generator</h1>
 
-    <div class="password-container">
+    <div class="container-new-passw">
         <strong>P4$5W0rD</strong>
         <button>
             <img src="images/copy.svg">
@@ -24,13 +24,16 @@
 
 <!--------------------------PARAMETERS------------------------------------>
 
-    <div class="param-container">
-        <div class="char-length">
+    <div class="container-parameters">
+        <div class="box-passw-length">
             <h2>Character Lenght</h2>
-            <span>0</span> 
+            <span id="password-length">0</span> 
         </div>
     
-        <input class="input-range" type="range" min="0" max="15" step="1">
+        <form class="form-range">
+            <input class="input-range" type="range" min="0" max="15" value="0" step="1">
+        </form>
+        
 
         <div class="checkbox-wrap">
             <form class="checkbox-container">
