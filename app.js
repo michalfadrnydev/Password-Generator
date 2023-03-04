@@ -40,6 +40,8 @@ let checkboxNumbersElement = document.querySelector(".checkbox-numbers");
 let checkboxSymbolsElement = document.querySelector(".checkbox-symbols");
 
 console.dir(checkboxUpperElement);
+console.log(checkboxUpperElement.checked)
+
 
 if (checkboxUpperElement.checked == "true") {
 
