@@ -31,7 +31,7 @@ h1 {
     display: flex;
     font-size: 20px;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 15px 15px;
 }
 .container-new-passw button {
@@ -51,13 +51,20 @@ h1 {
     display: inline-block;
     font-family: 'Roboto Mono', monospace;
     margin: 0 20px 0 0;
-    opacity: 1;
-    transition: opacity 0.5s steps(4, jump-start);;
+    transition: opacity 0.5s steps(4, jump-start);
 }
 
 .no-display {
     opacity: 0;
     transition: opacity 0.5s steps(4, jump-start);;
+}
+
+#par-warning {
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 10px;
+    transition: opacity 0.5s steps(4, jump-start);
 }
 
 /*PARAMETERS--------------------------------*/
