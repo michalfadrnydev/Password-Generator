@@ -22,12 +22,12 @@ let passwInputValue = inputRangeElement.value;
 //Číslo počtu znaků ve spanu
 let spanSymbolsNumberElement = document.querySelector("#number-of-symbols");
 spanSymbolsNumberElement.innerHTML = passwInputValue;
-let numberOfSymbols = 0;
+let numberOfSigns = 0;
 
 inputRangeElement.addEventListener("input", function() {
     passwInputValue = inputRangeElement.value;
     spanSymbolsNumberElement.innerHTML = passwInputValue;
-    numberOfSymbols = inputRangeElement.value;
+    numberOfSigns = inputRangeElement.value;
 })
 
 //Checkboxes
@@ -62,9 +62,9 @@ const symbols = ["+", "-", "&", "!", ":","_", "*", "?", ":", "#", "@"];
 let parameterWarningElement = document.querySelector("#par-warning");
 
 class Password{
-    constructor(numberOfSymbols) {
+    constructor(numberOfSigns) {
         // Definování počtu symbolů
-        this.numberOfSymbols = numberOfSymbols;
+        this.numberOfSigns = numberOfSigns;
         // Definování statusu indexů
         this.letterAddStatus = checkboxLowerLetterStatus;
         this.numberAddStatus = checkboxNumberStatus;
@@ -75,72 +75,146 @@ class Password{
         this.numberList = [];
         this.symbolList = [];
 
-        if(this.numberOfSymbols === 0) {
+        if(this.numberOfSigns === 0) {
             parameterWarningElement.classList.remove("no-display");
             setTimeout(() => {
                 parameterWarningElement.classList.add("no-display");
             }, "1500")
         }
-        
-        //Stanovení počtu znaků na pro jednotlivé arrays na základě inputu
-        else if (this.numberOfSymbols % 3 === 0) {
-            this.letterCount = numberOfSymbols / 3;
-            this.numberCount = numberOfSymbols / 3;
-            this.symbolCount = numberOfSymbols / 3;
-        } else if (this.numberOfSymbols % 3 === 1) {
-            this.letterCount = Math.floor(numberOfSymbols / 3) + 1;
-            this.numberCount = Math.floor(numberOfSymbols / 3);
-            this.symbolCount = Math.floor(numberOfSymbols / 3);
-        } else if (this.numberOfSymbols % 3 === 2) {
-            this.letterCount = Math.floor(numberOfSymbols / 3) + 1;
-            this.numberCount = Math.floor(numberOfSymbols / 3) + 1;
-            this.symbolCount = Math.floor(numberOfSymbols / 3);
-        };
+    }
+    
+    //STANOVENÍ POČTU ZNAKŮ PRO PISMENA ČÍSLA SYMBOLY
+    singleParameterPassword () {
 
-        // Funkce pro výběr náhodných znaků na základě počtu znaků
-        let randListIndex = function ( list ) {
-            let randIndex = Math.floor(Math.random()*(list.length - 1)) + 1;
-            return randIndex;
+    }
+    
+    doubleParameterPassword () {
+        // UL & LL
+        if (this.letterUpperAddStatus && this.letterAddStatus === true && this.numberOfSigns % 2 === 0) {
+            this.letterCount = numberOfSigns / 2;
+            this.letterUpperCount = numberOfSigns / 2;
         }
-        let addSignsToList = function (pickingList, numberOfSigns, addingList) {
-            for (let i = 0; i < numberOfSigns; i++) {
-                addingList.push(pickingList[randListIndex(pickingList)]);
-            }
+        else if (this.letterUpperAddStatus && this.letterAddStatus === true && this.numberOfSigns % 2 === 1) {
+            this.letterCount = numberOfSigns / 2 + 1;
+            this.letterUpperCount = numberOfSigns / 2;
         }
-        
-        // Přidání náhodně vybraných znaků do prázdných array
-        addSignsToList(letters, this.letterCount, this.letterList);
-        addSignsToList(numbers, this.numberCount, this.numberList);
-        addSignsToList(symbols, this.symbolCount, this.symbolList);
+        // UL & S
+        else if (this.letterUpperAddStatus && this.symbolAddStatus === true && this.numberOfSigns % 2 === 0) {
+            this.letterUpperCount = numberOfSigns / 2;
+            this.symbolCount = numberOfSigns / 2;
+        }
+        else if (this.letterUpperAddStatus && this.symbolAddStatus === true && this.numberOfSigns % 2 === 1) {
+            this.letterUpperCount = numberOfSigns / 2 + 1;
+            this.symbolCount = numberOfSigns / 2;
+        }
+        // UL & N
+        else if (this.letterUpperAddStatus && this.numberAddStatus === true && this.numberOfSigns % 2 === 0) {
+            this.letterUpperCount = numberOfSigns / 2;
+            this.numberCount = numberOfSigns / 2;
+        }
+        else if (this.letterUpperAddStatus && this.numberAddStatus === true && this.numberOfSigns % 2 === 1) {
+            this.letterUpperCount = numberOfSigns / 2 + 1;
+            this.numberCount = numberOfSigns / 2;
+        }
+        //LL & N
+        else if (this.letterAddStatus && this.numberAddStatus === true && this.numberOfSigns % 2 === 0) {
+            this.letterCount = numberOfSigns / 2;
+            this.numberCount = numberOfSigns / 2;
+        }
+        else if (this.letterAddStatus && this.numberAddStatus === true && this.numberOfSigns % 2 === 1) {
+            this.letterCount = numberOfSigns / 2 + 1;
+            this.numberCount = numberOfSigns / 2;
+        }
+        //LL & S
+        else if (this.letterAddStatus && this.symbolAddStatus === true && this.numberOfSigns % 2 === 0) {
+            this.letterCount = numberOfSigns / 2;
+            this.symbolCount = numberOfSigns / 2;
+        }
+        else if (this.letterAddStatus && this.symbolAddStatus === true && this.numberOfSigns % 2 === 1) {
+            this.letterCount = numberOfSigns / 2 + 1;
+            this.symbolCount = numberOfSigns / 2;
+        }
+        //N & S
+        else if (this.numberAddStatus && this.symbolAddStatus === true && this.numberOfSigns % 2 === 0) {
+            this.numberCount = numberOfSigns / 2;
+            this.symbolCount = numberOfSigns / 2;
+        }
+        else if (this.numberAddStatus && this.symbolAddStatus === true && this.numberOfSigns % 2 === 1) {
+            this.numberCount = numberOfSigns / 2 + 1;
+            this.symbolCount = numberOfSigns / 2;
+        }
 
-        // Pokud jsou zakliklé upper case znaky, definování nového listu
-        this.letterUpperList = [];
+    tripleParameterPassword () {
+        //UL, LL, N
+        //UL, LL, S
+        //UL, N, S
+        //LL, N, S
+    }
+    quatroParameterPassword () {
+        // UL, LL, N, S
+    }
+} 
 
-        if (this.letterList.length%2 === 0) {
-            for (let i = 0; i < this.letterList.length/2; i++) {
-                this.letterUpperList.push(this.letterList[i].toUpperCase());
-            }
-            for (let i = this.letterList.length/2; i < this.letterList.length; i++) {
-                this.letterUpperList.push(this.letterList[i]);
-            }
-        }
-        else if (this.letterList.length%2 !== 0) {
-            for (let i = 0; i < Math.floor(this.letterList.length/2); i++) {
-                this.letterUpperList.push(this.letterList[i].toUpperCase());
-            }
-            for (let i = Math.floor(this.letterList.length/2); i < this.letterList.length; i++) {
-                this.letterUpperList.push(this.letterList[i]);
-            }
+    /*
+    //Stanovení počtu znaků na pro jednotlivé arrays na základě inputu
+    if (this.numberOfSigns % 3 === 0) {
+        this.letterCount = numberOfSigns / 3;
+        this.numberCount = numberOfSigns / 3;
+        this.symbolCount = numberOfSigns / 3;
+    } else if (this.numberOfSigns % 3 === 1) {
+        this.letterCount = Math.floor(numberOfSigns / 3) + 1;
+        this.numberCount = Math.floor(numberOfSigns / 3);
+        this.symbolCount = Math.floor(numberOfSigns / 3);
+    } else if (this.numberOfSigns % 3 === 2) {
+        this.letterCount = Math.floor(numberOfSigns / 3) + 1;
+        this.numberCount = Math.floor(numberOfSigns / 3) + 1;
+        this.symbolCount = Math.floor(numberOfSigns / 3);
+    };
+    */
+
+    // Funkce pro výběr náhodných znaků na základě počtu znaků
+    let randListIndex = function ( list ) {
+        let randIndex = Math.floor(Math.random()*(list.length - 1)) + 1;
+        return randIndex;
+    }
+    let addSignsToList = function (pickingList, numberOfSigns, addingList) {
+        for (let i = 0; i < numberOfSigns; i++) {
+            addingList.push(pickingList[randListIndex(pickingList)]);
         }
     }
+    
+    // Přidání náhodně vybraných znaků do prázdných array
+    addSignsToList(letters, this.letterCount, this.letterList);
+    addSignsToList(numbers, this.numberCount, this.numberList);
+    addSignsToList(symbols, this.symbolCount, this.symbolList);
 
+    
+    // Pokud jsou zakliklé upper case znaky, definování nového listu
+    this.letterUpperList = [];
+
+    if (this.letterList.length%2 === 0) {
+        for (let i = 0; i < this.letterList.length/2; i++) {
+            this.letterUpperList.push(this.letterList[i].toUpperCase());
+        }
+        for (let i = this.letterList.length/2; i < this.letterList.length; i++) {
+            this.letterUpperList.push(this.letterList[i]);
+        }
+    }
+    else if (this.letterList.length%2 !== 0) {
+        for (let i = 0; i < Math.floor(this.letterList.length/2); i++) {
+            this.letterUpperList.push(this.letterList[i].toUpperCase());
+        }
+        for (let i = Math.floor(this.letterList.length/2); i < this.letterList.length; i++) {
+            this.letterUpperList.push(this.letterList[i]);
+        }
+    }
 }
 
 /*kliknutí na button generate*/
 let generateButtonElement = document.querySelector("#button-generate");
 
 generateButtonElement.addEventListener("click", function() {
-    let p1 = new Password(numberOfSymbols);
+    let p1 = new Password(numberOfSigns);
     console.log(p1);
 })
 

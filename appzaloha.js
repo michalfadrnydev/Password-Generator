@@ -101,9 +101,9 @@ const symbols = ["+", "-", "&", "!", ":","_", "*", "?", ":", "#", "@"];
 let parameterWarningElement = document.querySelector("#par-warning");
 
 class Password{
-    constructor(numberOfSymbols) {
+    constructor(numberOfSigns) {
         // Definování počtu symbolů
-        this.numberOfSymbols = numberOfSymbols;
+        this.numberOfSigns = numberOfSigns;
         // Definování statusu indexů
         this.letterAddStatus = checkboxLowerLetterStatus;
         this.numberAddStatus = checkboxNumberStatus;
@@ -114,7 +114,7 @@ class Password{
         this.numberList = [];
         this.symbolList = [];
 
-        if(this.numberOfSymbols === 0) {
+        if(this.numberOfSigns === 0) {
             parameterWarningElement.classList.remove("no-display");
             setTimeout(() => {
                 parameterWarningElement.classList.add("no-display");
@@ -122,18 +122,18 @@ class Password{
         }
         
         //Stanovení počtu znaků na pro jednotlivé arrays na základě inputu
-        else if (this.numberOfSymbols % 3 === 0) {
-            this.letterCount = numberOfSymbols / 3;
-            this.numberCount = numberOfSymbols / 3;
-            this.symbolCount = numberOfSymbols / 3;
-        } else if (this.numberOfSymbols % 3 === 1) {
-            this.letterCount = Math.floor(numberOfSymbols / 3) + 1;
-            this.numberCount = Math.floor(numberOfSymbols / 3);
-            this.symbolCount = Math.floor(numberOfSymbols / 3);
-        } else if (this.numberOfSymbols % 3 === 2) {
-            this.letterCount = Math.floor(numberOfSymbols / 3) + 1;
-            this.numberCount = Math.floor(numberOfSymbols / 3) + 1;
-            this.symbolCount = Math.floor(numberOfSymbols / 3);
+        else if (this.numberOfSigns % 3 === 0) {
+            this.letterCount = numberOfSigns / 3;
+            this.numberCount = numberOfSigns / 3;
+            this.symbolCount = numberOfSigns / 3;
+        } else if (this.numberOfSigns % 3 === 1) {
+            this.letterCount = Math.floor(numberOfSigns / 3) + 1;
+            this.numberCount = Math.floor(numberOfSigns / 3);
+            this.symbolCount = Math.floor(numberOfSigns / 3);
+        } else if (this.numberOfSigns % 3 === 2) {
+            this.letterCount = Math.floor(numberOfSigns / 3) + 1;
+            this.numberCount = Math.floor(numberOfSigns / 3) + 1;
+            this.symbolCount = Math.floor(numberOfSigns / 3);
         };
 
         // Funkce pro výběr náhodných znaků na základě počtu znaků
@@ -179,6 +179,6 @@ class Password{
 let generateButtonElement = document.querySelector("#button-generate");
 
 generateButtonElement.addEventListener("click", function() {
-    let p1 = new Password(numberOfSymbols);
+    let p1 = new Password(numberOfSigns);
     console.log(p1);
 })
