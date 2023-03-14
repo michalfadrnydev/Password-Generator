@@ -76,8 +76,14 @@ class Password {
         this.letterUpperList = [];
         this.numberList = [];
         this.symbolList = [];
+        this.letterLowerCount = 0;
+        this.letterUpperCount = 0;
+        this.numberCount = 0;
+        this.symbolCount = 0;
+        this.orderedFinalPassword = [];
+        this.randomFinalPassword = [];
     }
-    
+
     //STANOVENÍ POČTU ZNAKŮ PRO PISMENA ČÍSLA SYMBOLY
     singleParameterPassword () {
         // UL
@@ -252,6 +258,29 @@ class Password {
             this.symbolCount = Math.floor( totalNumberOfSigns / 4 );
         }
     }
+
+    appendSignToPassword ( lengthOfList, list ) {
+        for ( let i = 0; i < lengthOfList; i++ ) {
+            this.orderedFinalPassword.push( list[ Math.floor( Math.random() * ( list.length - 1 )) + 1 ]);
+        }
+    }
+    appendUpperSignToPassword ( lengthOfList, list ) {
+        for ( let i = 0; i < lengthOfList; i++ ) {
+            this.orderedFinalPassword.push( list[ Math.floor( Math.random() * ( list.length - 1 )) + 1 ].toUpperCase() );
+        }
+    }
+
+    
+    randomizePassword () {
+        let randomIndex;
+        for (let i = 0; i < this.orderedFinalPassword.length; i++ ) {
+            //vybrání náhodného indexu pro list
+            randomIndex = Math.floor( Math.random() * ( this.orderedFinalPassword.length + 1 ));
+            this.randomFinalPassword.push( this.orderedFinalPassword[ randomIndex ] );
+            this.orderedFinalPassword.splice(randomIndex, 1);
+        }
+    }
+    
 }
 
 // Vygenerování hesla kliknutím na button
@@ -261,7 +290,6 @@ let parameterWarningElement = document.querySelector("#par-warning");
 generateButtonElement.addEventListener("click", function () {
     let p1 = new Password(passwInputValue);
     console.log(p1);
-
 
     //Stanovení počtu zaškrtlých parametrů
     p1.statusCheckboxes = [ p1.letterLowerAddStatus, p1.letterUpperAddStatus, p1.numberAddStatus, p1.symbolAddStatus ];
@@ -286,6 +314,13 @@ generateButtonElement.addEventListener("click", function () {
     else if (p1.statusTrueCheckboxesLength == 4) {
         p1.quatroParameterPassword();
     }
+
+    p1.appendSignToPassword(p1.letterLowerCount, letters);
+    p1.appendUpperSignToPassword(p1.letterUpperCount, letters);
+    p1.appendSignToPassword(p1.numberCount, numbers);
+    p1.appendSignToPassword(p1.symbolCount, symbols);
+
+    p1.randomizePassword();
 
     // Warning Message
     if (p1.totalNumberOfSigns == 0) {
@@ -313,27 +348,6 @@ let addSignsToList = function (pickingList, totalNumberOfSigns, addingList) {
 addSignsToList(letters, this.letterLowerCount, this.letterList);
 addSignsToList(numbers, this.numberCount, this.numberList);
 addSignsToList(symbols, this.symbolCount, this.symbolList);
-
-    
-// Pokud jsou zakliklé upper case znaky, definování nového listu
-this.letterUpperList = [];
-
-if (this.letterList.length%2 === 0) {
-    for (let i = 0; i < this.letterList.length/2; i++) {
-        this.letterUpperList.push(this.letterList[i].toUpperCase());
-    }
-    for (let i = this.letterList.length/2; i < this.letterList.length; i++) {
-        this.letterUpperList.push(this.letterList[i]);
-    }
-}
-else if (this.letterList.length%2 !== 0) {
-    for (let i = 0; i < Math.floor(this.letterList.length/2); i++) {
-        this.letterUpperList.push(this.letterList[i].toUpperCase());
-    }
-    for (let i = Math.floor(this.letterList.length/2); i < this.letterList.length; i++) {
-        this.letterUpperList.push(this.letterList[i]);
-    }
-}
 
 //Generating list of random letters, numbers, symbols
 
