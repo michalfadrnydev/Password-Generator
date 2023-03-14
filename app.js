@@ -59,9 +59,6 @@ const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const symbols = ["+", "-", "&", "!", ":","_", "*", "?", ":", "#", "@"];
 
-// error message - default - display:none;
-
-
 class Password {
     constructor(totalNumberOfSigns) {
         // Definování počtu symbolů
@@ -82,8 +79,8 @@ class Password {
         this.symbolCount = 0;
         this.orderedFinalPassword = [];
         this.randomFinalPassword = [];
+        this.randomFinalPasswordString = "";
     }
-
     //STANOVENÍ POČTU ZNAKŮ PRO PISMENA ČÍSLA SYMBOLY
     singleParameterPassword () {
         // UL
@@ -103,7 +100,6 @@ class Password {
             this.symbolCount = this.totalNumberOfSigns;
         }
     }
-    
     doubleParameterPassword () {
         // UL & LL
         if (this.letterUpperAddStatus && this.letterLowerAddStatus == true && this.totalNumberOfSigns % 2 == 0) {
@@ -160,7 +156,6 @@ class Password {
             this.symbolCount = Math.floor( totalNumberOfSigns / 2 );
         }
     }
-
     tripleParameterPassword () {
         //UL, LL, N
         if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus == true && this.totalNumberOfSigns % 3 == 0) {
@@ -178,7 +173,6 @@ class Password {
             this.letterLowerCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
             this.numberCount = Math.floor( totalNumberOfSigns / 3 );
         }
-
         //UL, LL, S
         else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 0) {
             this.letterUpperCount = totalNumberOfSigns / 3;
@@ -195,7 +189,6 @@ class Password {
             this.letterLowerCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
             this.symbolCount = Math.floor( totalNumberOfSigns / 3 );
         }
-
         //UL, N, S
         else if (this.letterUpperAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 0) {
             this.letterUpperCount = totalNumberOfSigns / 3;
@@ -212,7 +205,6 @@ class Password {
             this.numberCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
             this.symbolCount = Math.floor( totalNumberOfSigns / 3 );
         }
-
         //LL, N, S
         else if (this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 0) {
             this.letterLowerCount = totalNumberOfSigns / 3;
@@ -230,7 +222,6 @@ class Password {
             this.symbolCount = Math.floor( totalNumberOfSigns / 3 );
         }
     }
-
     quatroParameterPassword () {
         // UL, LL, N, S
         if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 4 == 0) {
@@ -258,7 +249,6 @@ class Password {
             this.symbolCount = Math.floor( totalNumberOfSigns / 4 );
         }
     }
-
     appendSignToPassword ( lengthOfList, list ) {
         for ( let i = 0; i < lengthOfList; i++ ) {
             this.orderedFinalPassword.push( list[ Math.floor( Math.random() * ( list.length - 1 )) + 1 ]);
@@ -269,18 +259,18 @@ class Password {
             this.orderedFinalPassword.push( list[ Math.floor( Math.random() * ( list.length - 1 )) + 1 ].toUpperCase() );
         }
     }
-
-    
     randomizePassword () {
-        let randomIndex;
-        while ( this.randomFinalPassword.length != /*delka toho serazeneho listu*/ ) {
-            //vybrání náhodného indexu pro list
-            randomIndex = Math.floor( Math.random() * ( this.orderedFinalPassword.length + 1 ));
+        while ( this.randomFinalPassword.length != this.totalNumberOfSigns ) {
+            let randomIndex = Math.floor( Math.random() *  this.orderedFinalPassword.length );
             this.randomFinalPassword.push( this.orderedFinalPassword[ randomIndex ] );
             this.orderedFinalPassword.splice(randomIndex, 1);
         }
     }
-    
+    finalStringPassword () {
+        for (let i = 0; i < this.randomFinalPassword.length; i++) {
+            this.randomFinalPasswordString += this.randomFinalPassword[i];
+        }
+    }
 }
 
 // Vygenerování hesla kliknutím na button
@@ -304,24 +294,26 @@ generateButtonElement.addEventListener("click", function () {
     // Použití funkcí pro stanovení, kolik znaků se má použít
     if (p1.statusTrueCheckboxesLength == 1) {
         p1.singleParameterPassword();
-    }
-    else if (p1.statusTrueCheckboxesLength == 2) {
+    } else if (p1.statusTrueCheckboxesLength == 2) {
         p1.doubleParameterPassword();
-    }
-    else if (p1.statusTrueCheckboxesLength == 3) {
+    } else if (p1.statusTrueCheckboxesLength == 3) {
         p1.tripleParameterPassword();
-    }
-    else if (p1.statusTrueCheckboxesLength == 4) {
+    } else if (p1.statusTrueCheckboxesLength == 4) {
         p1.quatroParameterPassword();
     }
 
+    // Přidání znaků do finálního seřazeného hesla
     p1.appendSignToPassword(p1.letterLowerCount, letters);
     p1.appendUpperSignToPassword(p1.letterUpperCount, letters);
     p1.appendSignToPassword(p1.numberCount, numbers);
     p1.appendSignToPassword(p1.symbolCount, symbols);
-
+    // Vygenerování finálního hesla
     p1.randomizePassword();
+    p1.finalStringPassword();
 
+    //DOM navázání na heslo
+    generatedPasswordElement.innerHTML = p1.randomFinalPasswordString;
+    
     // Warning Message
     if (p1.totalNumberOfSigns == 0) {
         parameterWarningElement.classList.remove("no-display");
@@ -330,43 +322,3 @@ generateButtonElement.addEventListener("click", function () {
         }, "1500")
     }
 })
-
-
-/*
-// Funkce pro výběr náhodných znaků na základě počtu znaků
-let randListIndex = function ( list ) {
-    let randIndex = Math.floor(Math.random()*(list.length - 1)) + 1;
-    return randIndex;
-}
-let addSignsToList = function (pickingList, totalNumberOfSigns, addingList) {
-    for (let i = 0; i < totalNumberOfSigns; i++) {
-        addingList.push(pickingList[randListIndex(pickingList)]);
-    }
-}
-    
-// Přidání náhodně vybraných znaků do prázdných array
-addSignsToList(letters, this.letterLowerCount, this.letterList);
-addSignsToList(numbers, this.numberCount, this.numberList);
-addSignsToList(symbols, this.symbolCount, this.symbolList);
-
-//Generating list of random letters, numbers, symbols
-
-let newOrderedPassw =[];
-newOrderedPassw.push(...newPasswordLetters);
-newOrderedPassw.push(...newPasswordNumbers);
-newOrderedPassw.push(...newPasswordSymbols);
-
-console.log(newOrderedPassw);
-
-let newPassw = [];
-let randIndex;
-
-while (newOrderedPassw.length != 0) {
-    randIndex = Math.floor( Math.random() * newOrderedPassw.length );
-    newPassw.push(newOrderedPassw[randIndex]);
-    newOrderedPassw.splice(randIndex, 1);
-}
-
-console.log(newPassw);
-*/
-
