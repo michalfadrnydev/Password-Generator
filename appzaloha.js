@@ -45,7 +45,7 @@ console.log(finalPasswordString);
 /*----------------------------------------------------------------*/
 
 
-let letterCount = 4;
+let letterLowerCount = 4;
 let numberCount = 4;
 let symbolCount = 2;
 
@@ -59,14 +59,14 @@ let randListIndex = function ( list ) {
     return randIndex;
 }
 //Picking signs from any list based on count of signs & adding it to empty list
-let addSignsToList = function (pickingList, numberOfSigns, addingList) {
-    for (let i = 0; i < numberOfSigns; i++) {
+let addSignsToList = function (pickingList, totalNumberOfSigns, addingList) {
+    for (let i = 0; i < totalNumberOfSigns; i++) {
         addingList.push(pickingList[randListIndex(pickingList)]);
     }
 }
 
 //Generating list of random letters, numbers, symbols
-addSignsToList(letters, letterCount, newPasswordLetters);
+addSignsToList(letters, letterLowerCount, newPasswordLetters);
 addSignsToList(numbers, numberCount, newPasswordNumbers);
 addSignsToList(symbols, symbolCount, newPasswordSymbols);
 
@@ -101,11 +101,11 @@ const symbols = ["+", "-", "&", "!", ":","_", "*", "?", ":", "#", "@"];
 let parameterWarningElement = document.querySelector("#par-warning");
 
 class Password{
-    constructor(numberOfSigns) {
+    constructor(totalNumberOfSigns) {
         // Definování počtu symbolů
-        this.numberOfSigns = numberOfSigns;
+        this.totalNumberOfSigns = totalNumberOfSigns;
         // Definování statusu indexů
-        this.letterAddStatus = checkboxLowerLetterStatus;
+        this.letterLowerAddStatus = checkboxLowerLetterStatus;
         this.numberAddStatus = checkboxNumberStatus;
         this.symbolAddStatus = checkboxSymbolStatus;
         this.letterUpperAddStatus = checkboxUpperLetterStatus;
@@ -114,7 +114,7 @@ class Password{
         this.numberList = [];
         this.symbolList = [];
 
-        if(this.numberOfSigns === 0) {
+        if(this.totalNumberOfSigns === 0) {
             parameterWarningElement.classList.remove("no-display");
             setTimeout(() => {
                 parameterWarningElement.classList.add("no-display");
@@ -122,18 +122,18 @@ class Password{
         }
         
         //Stanovení počtu znaků na pro jednotlivé arrays na základě inputu
-        else if (this.numberOfSigns % 3 === 0) {
-            this.letterCount = numberOfSigns / 3;
-            this.numberCount = numberOfSigns / 3;
-            this.symbolCount = numberOfSigns / 3;
-        } else if (this.numberOfSigns % 3 === 1) {
-            this.letterCount = Math.floor(numberOfSigns / 3) + 1;
-            this.numberCount = Math.floor(numberOfSigns / 3);
-            this.symbolCount = Math.floor(numberOfSigns / 3);
-        } else if (this.numberOfSigns % 3 === 2) {
-            this.letterCount = Math.floor(numberOfSigns / 3) + 1;
-            this.numberCount = Math.floor(numberOfSigns / 3) + 1;
-            this.symbolCount = Math.floor(numberOfSigns / 3);
+        else if (this.totalNumberOfSigns % 3 === 0) {
+            this.letterLowerCount = totalNumberOfSigns / 3;
+            this.numberCount = totalNumberOfSigns / 3;
+            this.symbolCount = totalNumberOfSigns / 3;
+        } else if (this.totalNumberOfSigns % 3 === 1) {
+            this.letterLowerCount = Math.floor(totalNumberOfSigns / 3) + 1;
+            this.numberCount = Math.floor(totalNumberOfSigns / 3);
+            this.symbolCount = Math.floor(totalNumberOfSigns / 3);
+        } else if (this.totalNumberOfSigns % 3 === 2) {
+            this.letterLowerCount = Math.floor(totalNumberOfSigns / 3) + 1;
+            this.numberCount = Math.floor(totalNumberOfSigns / 3) + 1;
+            this.symbolCount = Math.floor(totalNumberOfSigns / 3);
         };
 
         // Funkce pro výběr náhodných znaků na základě počtu znaků
@@ -141,14 +141,14 @@ class Password{
             let randIndex = Math.floor(Math.random()*(list.length - 1)) + 1;
             return randIndex;
         }
-        let addSignsToList = function (pickingList, numberOfSigns, addingList) {
-            for (let i = 0; i < numberOfSigns; i++) {
+        let addSignsToList = function (pickingList, totalNumberOfSigns, addingList) {
+            for (let i = 0; i < totalNumberOfSigns; i++) {
                 addingList.push(pickingList[randListIndex(pickingList)]);
             }
         }
         
         // Přidání náhodně vybraných znaků do prázdných array
-        addSignsToList(letters, this.letterCount, this.letterList);
+        addSignsToList(letters, this.letterLowerCount, this.letterList);
         addSignsToList(numbers, this.numberCount, this.numberList);
         addSignsToList(symbols, this.symbolCount, this.symbolList);
 
@@ -179,6 +179,6 @@ class Password{
 let generateButtonElement = document.querySelector("#button-generate");
 
 generateButtonElement.addEventListener("click", function() {
-    let p1 = new Password(numberOfSigns);
+    let p1 = new Password(totalNumberOfSigns);
     console.log(p1);
 })
