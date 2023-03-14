@@ -81,175 +81,175 @@ class Password {
     //STANOVENÍ POČTU ZNAKŮ PRO PISMENA ČÍSLA SYMBOLY
     singleParameterPassword () {
         // UL
-        if ( this.letterUpperAddStatus === true) {
-            this.letterUpperCount = this.totalNumberOfSigns
+        if ( this.letterUpperAddStatus == true) {
+            this.letterUpperCount = this.totalNumberOfSigns;
         }
         // LL
-        else if ( this.letterLowerAddStatus === true) {
-            this.letterLowerCount = this.totalNumberOfSigns
+        else if ( this.letterLowerAddStatus == true) {
+            this.letterLowerCount = this.totalNumberOfSigns;
         }
         // N
-        else if ( this.numberAddStatus === true) {
-            this.numberCount = this.totalNumberOfSigns
+        else if ( this.numberAddStatus == true) {
+            this.numberCount = this.totalNumberOfSigns;
         }
         // S
-        else if ( this.symbolAddStatus === true) {
-            this.symbolCount = this.totalNumberOfSigns
+        else if ( this.symbolAddStatus == true) {
+            this.symbolCount = this.totalNumberOfSigns;
         }
     }
     
     doubleParameterPassword () {
         // UL & LL
-        if (this.letterUpperAddStatus && this.letterLowerAddStatus === true && this.totalNumberOfSigns % 2 === 0) {
+        if (this.letterUpperAddStatus && this.letterLowerAddStatus == true && this.totalNumberOfSigns % 2 == 0) {
             this.letterLowerCount = totalNumberOfSigns / 2;
             this.letterUpperCount = totalNumberOfSigns / 2;
         }
-        else if (this.letterUpperAddStatus && this.letterLowerAddStatus === true && this.totalNumberOfSigns % 2 === 1) {
-            this.letterLowerCount = totalNumberOfSigns / 2 + 1;
-            this.letterUpperCount = totalNumberOfSigns / 2;
+        else if (this.letterUpperAddStatus && this.letterLowerAddStatus == true && this.totalNumberOfSigns % 2 == 1) {
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 2 ) + 1;
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 2 );
         }
         // UL & S
-        else if (this.letterUpperAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 2 === 0) {
+        else if (this.letterUpperAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 2 == 0) {
             this.letterUpperCount = totalNumberOfSigns / 2;
             this.symbolCount = totalNumberOfSigns / 2;
         }
-        else if (this.letterUpperAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 2 === 1) {
-            this.letterUpperCount = totalNumberOfSigns / 2 + 1;
-            this.symbolCount = totalNumberOfSigns / 2;
+        else if (this.letterUpperAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 2 == 1) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 2 ) + 1;
+            this.symbolCount = Math.floor( totalNumberOfSigns / 2 );
         }
         // UL & N
-        else if (this.letterUpperAddStatus && this.numberAddStatus === true && this.totalNumberOfSigns % 2 === 0) {
+        else if (this.letterUpperAddStatus && this.numberAddStatus == true && this.totalNumberOfSigns % 2 == 0) {
             this.letterUpperCount = totalNumberOfSigns / 2;
             this.numberCount = totalNumberOfSigns / 2;
         }
-        else if (this.letterUpperAddStatus && this.numberAddStatus === true && this.totalNumberOfSigns % 2 === 1) {
-            this.letterUpperCount = totalNumberOfSigns / 2 + 1;
-            this.numberCount = totalNumberOfSigns / 2;
+        else if (this.letterUpperAddStatus && this.numberAddStatus == true && this.totalNumberOfSigns % 2 == 1) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 2 ) + 1;
+            this.numberCount = Math.floor( totalNumberOfSigns / 2 );
         }
         //LL & N
-        else if (this.letterLowerAddStatus && this.numberAddStatus === true && this.totalNumberOfSigns % 2 === 0) {
+        else if (this.letterLowerAddStatus && this.numberAddStatus == true && this.totalNumberOfSigns % 2 == 0) {
             this.letterLowerCount = totalNumberOfSigns / 2;
             this.numberCount = totalNumberOfSigns / 2;
         }
-        else if (this.letterLowerAddStatus && this.numberAddStatus === true && this.totalNumberOfSigns % 2 === 1) {
-            this.letterLowerCount = totalNumberOfSigns / 2 + 1;
-            this.numberCount = totalNumberOfSigns / 2;
+        else if (this.letterLowerAddStatus && this.numberAddStatus == true && this.totalNumberOfSigns % 2 == 1) {
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 2 + 1 );
+            this.numberCount = Math.floor( totalNumberOfSigns / 2 );
         }
         //LL & S
-        else if (this.letterLowerAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 2 === 0) {
+        else if (this.letterLowerAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 2 == 0) {
             this.letterLowerCount = totalNumberOfSigns / 2;
             this.symbolCount = totalNumberOfSigns / 2;
         }
-        else if (this.letterLowerAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 2 === 1) {
-            this.letterLowerCount = totalNumberOfSigns / 2 + 1;
-            this.symbolCount = totalNumberOfSigns / 2;
+        else if (this.letterLowerAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 2 == 1) {
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 2 ) + 1;
+            this.symbolCount = Math.floor( totalNumberOfSigns / 2 );
         }
         //N & S
-        else if (this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 2 === 0) {
+        else if (this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 2 == 0) {
             this.numberCount = totalNumberOfSigns / 2;
             this.symbolCount = totalNumberOfSigns / 2;
         }
-        else if (this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 2 === 1) {
-            this.numberCount = totalNumberOfSigns / 2 + 1;
-            this.symbolCount = totalNumberOfSigns / 2;
+        else if (this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 2 == 1) {
+            this.numberCount = Math.floor( totalNumberOfSigns / 2 ) + 1;
+            this.symbolCount = Math.floor( totalNumberOfSigns / 2 );
         }
     }
 
     tripleParameterPassword () {
         //UL, LL, N
-        if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus === true && this.totalNumberOfSigns % 3 === 0) {
-            this.letterUpperCount = totalNumberOfSigns /3;
-            this.letterLowerCount = totalNumberOfSigns /3;
+        if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus == true && this.totalNumberOfSigns % 3 == 0) {
+            this.letterUpperCount = totalNumberOfSigns / 3;
+            this.letterLowerCount = totalNumberOfSigns / 3;
             this.numberCount = totalNumberOfSigns / 3;
         }
-        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus === true && this.totalNumberOfSigns % 3 === 1) {
-            this.letterUpperCount = totalNumberOfSigns /3 + 1;
-            this.letterLowerCount = totalNumberOfSigns /3;
-            this.numberCount = totalNumberOfSigns / 3;
+        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus == true && this.totalNumberOfSigns % 3 == 1) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 3 );
+            this.numberCount = Math.floor( totalNumberOfSigns / 3 );
         }
-        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus === true && this.totalNumberOfSigns % 3 === 2) {
-            this.letterUpperCount = totalNumberOfSigns /3 + 1;
-            this.letterLowerCount = totalNumberOfSigns /3 + 1;
-            this.numberCount = totalNumberOfSigns / 3;
+        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus == true && this.totalNumberOfSigns % 3 == 2) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.numberCount = Math.floor( totalNumberOfSigns / 3 );
         }
 
         //UL, LL, S
-        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 3 === 0) {
-            this.letterUpperCount = totalNumberOfSigns /3;
-            this.letterLowerCount = totalNumberOfSigns /3;
+        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 0) {
+            this.letterUpperCount = totalNumberOfSigns / 3;
+            this.letterLowerCount = totalNumberOfSigns / 3;
             this.symbolCount = totalNumberOfSigns / 3;
         }
-        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 3 === 1) {
-            this.letterUpperCount = totalNumberOfSigns /3 + 1;
-            this.letterLowerCount = totalNumberOfSigns /3;
-            this.symbolCount = totalNumberOfSigns / 3;
+        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 1) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 3 );
+            this.symbolCount = Math.floor( totalNumberOfSigns / 3 );
         }
-        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 3 === 2) {
-            this.letterUpperCount = totalNumberOfSigns /3 + 1;
-            this.letterLowerCount = totalNumberOfSigns /3 + 1;
-            this.symbolCount = totalNumberOfSigns / 3;
+        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 2) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.symbolCount = Math.floor( totalNumberOfSigns / 3 );
         }
 
         //UL, N, S
-        else if (this.letterUpperAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 3 === 0) {
-            this.letterUpperCount = totalNumberOfSigns /3;
-            this.numberCount = totalNumberOfSigns /3;
+        else if (this.letterUpperAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 0) {
+            this.letterUpperCount = totalNumberOfSigns / 3;
+            this.numberCount = totalNumberOfSigns / 3;
             this.symbolCount = totalNumberOfSigns / 3;
         }
-        else if (this.letterUpperAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 3 === 1) {
-            this.letterUpperCount = totalNumberOfSigns /3 + 1;
-            this.numberCount = totalNumberOfSigns /3;
-            this.symbolCount = totalNumberOfSigns / 3;
+        else if (this.letterUpperAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 1) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.numberCount = Math.floor( totalNumberOfSigns / 3 );
+            this.symbolCount = Math.floor( totalNumberOfSigns / 3 );
         }
-        else if (this.letterUpperAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 3 === 2) {
-            this.letterUpperCount = totalNumberOfSigns /3 + 1;
-            this.numberCount = totalNumberOfSigns /3 + 1;
-            this.symbolCount = totalNumberOfSigns / 3;
+        else if (this.letterUpperAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 2) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.numberCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.symbolCount = Math.floor( totalNumberOfSigns / 3 );
         }
 
         //LL, N, S
-        else if (this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 3 === 0) {
-            this.letterLowerCount = totalNumberOfSigns /3;
-            this.numberCount = totalNumberOfSigns /3;
+        else if (this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 0) {
+            this.letterLowerCount = totalNumberOfSigns / 3;
+            this.numberCount = totalNumberOfSigns / 3;
             this.symbolCount = totalNumberOfSigns / 3;
         }
-        else if (this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 3 === 1) {
-            this.letterLowerCount = totalNumberOfSigns /3 + 1;
-            this.numberCount = totalNumberOfSigns /3;
-            this.symbolCount = totalNumberOfSigns / 3;
+        else if (this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 1) {
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.numberCount = Math.floor( totalNumberOfSigns / 3 );
+            this.symbolCount = Math.floor( totalNumberOfSigns / 3 )
         }
-        else if (this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 3 === 2) {
-            this.letterLowerCount = totalNumberOfSigns /3 + 1;
-            this.numberCount = totalNumberOfSigns /3 + 1;
-            this.symbolCount = totalNumberOfSigns / 3;
+        else if (this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 3 == 2) {
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.numberCount = Math.floor( totalNumberOfSigns / 3 ) + 1;
+            this.symbolCount = Math.floor( totalNumberOfSigns / 3 );
         }
     }
 
     quatroParameterPassword () {
         // UL, LL, N, S
-        if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 4 === 0) {
-            this.letterUpperCount = totalNumberOfSigns /4;
-            this.letterLowerCount = totalNumberOfSigns /4;
-            this.numberCount = totalNumberOfSigns /4;
+        if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 4 == 0) {
+            this.letterUpperCount = totalNumberOfSigns / 4;
+            this.letterLowerCount = totalNumberOfSigns / 4;
+            this.numberCount = totalNumberOfSigns / 4;
             this.symbolCount = totalNumberOfSigns / 4;
         }
-        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 4 === 1) {
-            this.letterUpperCount = totalNumberOfSigns /4 + 1;
-            this.letterLowerCount = totalNumberOfSigns /4;
-            this.numberCount = totalNumberOfSigns /4;
-            this.symbolCount = totalNumberOfSigns / 4;
+        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 4 == 1) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 4 ) + 1;
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 4 );
+            this.numberCount = Math.floor( totalNumberOfSigns / 4 );
+            this.symbolCount = Math.floor( totalNumberOfSigns / 4 );
         }
-        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 4 === 2) {
-            this.letterUpperCount = totalNumberOfSigns /4 + 1;
-            this.letterLowerCount = totalNumberOfSigns /4 + 1;
-            this.numberCount = totalNumberOfSigns /4;
-            this.symbolCount = totalNumberOfSigns / 4;
+        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 4 == 2) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 4 ) + 1;
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 4 ) + 1;
+            this.numberCount = Math.floor( totalNumberOfSigns / 4 );
+            this.symbolCount = Math.floor( totalNumberOfSigns / 4 );
         }
-        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus === true && this.totalNumberOfSigns % 4 === 3) {
-            this.letterUpperCount = totalNumberOfSigns /4 + 1;
-            this.letterLowerCount = totalNumberOfSigns /4 + 1;
-            this.numberCount = totalNumberOfSigns /4 + 1;
-            this.symbolCount = totalNumberOfSigns / 4;
+        else if (this.letterUpperAddStatus && this.letterLowerAddStatus && this.numberAddStatus && this.symbolAddStatus == true && this.totalNumberOfSigns % 4 == 3) {
+            this.letterUpperCount = Math.floor( totalNumberOfSigns / 4 ) + 1;
+            this.letterLowerCount = Math.floor( totalNumberOfSigns / 4 ) + 1;
+            this.numberCount = Math.floor( totalNumberOfSigns / 4 ) + 1;
+            this.symbolCount = Math.floor( totalNumberOfSigns / 4 );
         }
     }
 }
@@ -262,6 +262,32 @@ generateButtonElement.addEventListener("click", function () {
     let p1 = new Password(passwInputValue);
     console.log(p1);
 
+
+    //Stanovení počtu zaškrtlých parametrů
+    p1.statusCheckboxes = [ p1.letterLowerAddStatus, p1.letterUpperAddStatus, p1.numberAddStatus, p1.symbolAddStatus ];
+    p1.statusTrueCheckboxes = [];
+    for (let i = 0; i < p1.statusCheckboxes.length; i++ ) {
+        if ( p1.statusCheckboxes[i] == true ) {
+            p1.statusTrueCheckboxes.push(p1.statusCheckboxes[i])
+        }
+    }
+    p1.statusTrueCheckboxesLength = p1.statusTrueCheckboxes.length
+
+    // Použití funkcí pro stanovení, kolik znaků se má použít
+    if (p1.statusTrueCheckboxesLength == 1) {
+        p1.singleParameterPassword();
+    }
+    else if (p1.statusTrueCheckboxesLength == 2) {
+        p1.doubleParameterPassword();
+    }
+    else if (p1.statusTrueCheckboxesLength == 3) {
+        p1.tripleParameterPassword();
+    }
+    else if (p1.statusTrueCheckboxesLength == 4) {
+        p1.quatroParameterPassword();
+    }
+
+    // Warning Message
     if (p1.totalNumberOfSigns == 0) {
         parameterWarningElement.classList.remove("no-display");
         setTimeout(() => {
@@ -271,25 +297,7 @@ generateButtonElement.addEventListener("click", function () {
 })
 
 
-
-
-
 /*
-//Stanovení počtu znaků na pro jednotlivé arrays na základě inputu
-if (this.totalNumberOfSigns % 3 === 0) {
-    this.letterLowerCount = totalNumberOfSigns / 3;
-    this.numberCount = totalNumberOfSigns / 3;
-    this.symbolCount = totalNumberOfSigns / 3;
-} else if (this.totalNumberOfSigns % 3 === 1) {
-    this.letterLowerCount = Math.floor(totalNumberOfSigns / 3) + 1;
-    this.numberCount = Math.floor(totalNumberOfSigns / 3);
-    this.symbolCount = Math.floor(totalNumberOfSigns / 3);
-} else if (this.totalNumberOfSigns % 3 === 2) {
-    this.letterLowerCount = Math.floor(totalNumberOfSigns / 3) + 1;
-    this.numberCount = Math.floor(totalNumberOfSigns / 3) + 1;
-    this.symbolCount = Math.floor(totalNumberOfSigns / 3);
-};
-
 // Funkce pro výběr náhodných znaků na základě počtu znaků
 let randListIndex = function ( list ) {
     let randIndex = Math.floor(Math.random()*(list.length - 1)) + 1;
