@@ -273,7 +273,7 @@ class Password {
     
     randomizePassword () {
         let randomIndex;
-        for (let i = 0; i < this.orderedFinalPassword.length; i++ ) {
+        while ( this.randomFinalPassword.length != /*delka toho serazeneho listu*/ ) {
             //vybrání náhodného indexu pro list
             randomIndex = Math.floor( Math.random() * ( this.orderedFinalPassword.length + 1 ));
             this.randomFinalPassword.push( this.orderedFinalPassword[ randomIndex ] );
