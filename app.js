@@ -277,9 +277,13 @@ class Password {
 let generateButtonElement = document.querySelector("#button-generate");
 let parameterWarningElement = document.querySelector("#par-warning");
 let generatedPassword = document.querySelector(".generated-password");
+let strengthDescriptionElement = document.querySelector("#strength-description")
 let p1;
 
 generateButtonElement.addEventListener("click", function () {
+    generatedPasswordElement.innerHTML = "P4$5W0rD";
+    strengthDescriptionElement.innerHTML = "";
+    generatedPassword.classList.remove("generated-password-color");
     p1 = new Password(passwInputValue);
     console.log(p1);
     //Stanovení počtu zaškrtlých parametrů
@@ -310,7 +314,7 @@ generateButtonElement.addEventListener("click", function () {
     p1.randomizePassword();
     p1.finalStringPassword();
     // DOM navázání na heslo
-    if (p1.randomFinalPasswordString.length > 0 && p1.statusCheckboxes.includes(true) == true) {
+    if (p1.randomFinalPasswordString.length > 0 && p1.statusCheckboxes.includes(true) == true && p1.totalNumberOfSigns >= p1.statusTrueCheckboxesLength ) {
         generatedPasswordElement.innerHTML = p1.randomFinalPasswordString;
         generatedPassword.classList.add("generated-password-color");
     }
@@ -334,4 +338,23 @@ generateButtonElement.addEventListener("click", function () {
             parameterWarningElement.classList.add("no-display");
         }, "1500")
     }
+    // Kontrola, jestli je počet znaků větší než počet parametrů
+    else if (p1.totalNumberOfSigns < p1.statusTrueCheckboxesLength) {
+        parameterWarningElement.innerHTML = "More parameters than length of parssword!"
+        parameterWarningElement.classList.remove("no-display");
+        setTimeout(() => {
+            parameterWarningElement.classList.add("no-display");
+        }, "1500")
+    }
+    //Stanovení bezpečnosti hesla
+    if ( p1.randomFinalPasswordString.length > 0 && p1.randomFinalPasswordString.length < 5 ) { 
+        strengthDescriptionElement.innerHTML = "TOO WEAK!";
+    } else if ( p1.randomFinalPasswordString.length > 0 && p1.randomFinalPasswordString.length < 7) {
+        strengthDescriptionElement.innerHTML = "WEAK!";
+    } else if ( p1.randomFinalPasswordString.length > 0 && p1.randomFinalPasswordString.length < 10) {
+        strengthDescriptionElement.innerHTML = "MEDIUM!";
+    } else if ( p1.randomFinalPasswordString.length > 0 && p1.randomFinalPasswordString.length < 16) {
+        strengthDescriptionElement.innerHTML = "STRONG!";
+    }
+    //ještě nefunguje když je zaklikle 2 pismena a 3 parametry, porad zobrazuje TOO WEAK!
 })
