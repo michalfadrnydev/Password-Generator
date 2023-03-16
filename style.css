@@ -34,6 +34,9 @@ h1 {
     margin-bottom: 10px;
     padding: 15px 15px;
 }
+.generated-password-color {
+    color: white;
+}
 .container-new-passw button {
     border: none;
     background: none;

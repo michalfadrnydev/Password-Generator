@@ -276,11 +276,12 @@ class Password {
 // Vygenerování hesla kliknutím na button
 let generateButtonElement = document.querySelector("#button-generate");
 let parameterWarningElement = document.querySelector("#par-warning");
+let generatedPassword = document.querySelector(".generated-password");
+let p1;
 
 generateButtonElement.addEventListener("click", function () {
-    let p1 = new Password(passwInputValue);
+    p1 = new Password(passwInputValue);
     console.log(p1);
-
     //Stanovení počtu zaškrtlých parametrů
     p1.statusCheckboxes = [ p1.letterLowerAddStatus, p1.letterUpperAddStatus, p1.numberAddStatus, p1.symbolAddStatus ];
     p1.statusTrueCheckboxes = [];
@@ -290,7 +291,6 @@ generateButtonElement.addEventListener("click", function () {
         }
     }
     p1.statusTrueCheckboxesLength = p1.statusTrueCheckboxes.length
-
     // Použití funkcí pro stanovení, kolik znaků se má použít
     if (p1.statusTrueCheckboxesLength == 1) {
         p1.singleParameterPassword();
@@ -301,7 +301,6 @@ generateButtonElement.addEventListener("click", function () {
     } else if (p1.statusTrueCheckboxesLength == 4) {
         p1.quatroParameterPassword();
     }
-
     // Přidání znaků do finálního seřazeného hesla
     p1.appendSignToPassword(p1.letterLowerCount, letters);
     p1.appendUpperSignToPassword(p1.letterUpperCount, letters);
@@ -310,12 +309,26 @@ generateButtonElement.addEventListener("click", function () {
     // Vygenerování finálního hesla
     p1.randomizePassword();
     p1.finalStringPassword();
-
-    //DOM navázání na heslo
-    generatedPasswordElement.innerHTML = p1.randomFinalPasswordString;
-    
-    // Warning Message
-    if (p1.totalNumberOfSigns == 0) {
+    // DOM navázání na heslo
+    if (p1.randomFinalPasswordString.length > 0 && p1.statusCheckboxes.includes(true) == true) {
+        generatedPasswordElement.innerHTML = p1.randomFinalPasswordString;
+        generatedPassword.classList.add("generated-password-color");
+    }
+    // Warning Messages
+    else if (p1.totalNumberOfSigns == 0 && p1.statusCheckboxes.includes(true) == false) {
+        parameterWarningElement.innerHTML = "Character Length & Parameters not defined!"
+        parameterWarningElement.classList.remove("no-display");
+        setTimeout(() => {
+            parameterWarningElement.classList.add("no-display");
+        }, "1500")
+    } else if (p1.totalNumberOfSigns == 0) {
+        parameterWarningElement.innerHTML = "Character Length not defined!"
+        parameterWarningElement.classList.remove("no-display");
+        setTimeout(() => {
+            parameterWarningElement.classList.add("no-display");
+        }, "1500")
+    } else if (p1.statusCheckboxes.includes(true) == false) {
+        parameterWarningElement.innerHTML = "Character Parameters not defined!"
         parameterWarningElement.classList.remove("no-display");
         setTimeout(() => {
             parameterWarningElement.classList.add("no-display");
