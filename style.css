@@ -55,6 +55,10 @@ h1 {
 }
 .copy-button img {
     vertical-align: middle;
+
+}
+.copy-button img:hover {
+    filter: brightness(0) invert(1);
 }
 .copy-message {
     color: var(--c-text);
@@ -202,8 +206,6 @@ h1 {
     transition: all 0.3s steps(4, jump-start);
 }
 
-
-
 @media (min-width: 768px) {
     body {
         padding: 130px 115px;
@@ -215,6 +217,8 @@ h1 {
     .container-new-passw {
         margin-bottom: 15spx;
         padding: 25px 35px;
+        max-width: 540px;
+        margin: 0 auto;
     }
     .generated-password{
         transition: all 0.5s steps(4, jump-start);
@@ -234,6 +238,8 @@ h1 {
     /*-------Charcter Length*/
     .container-parameters {
         padding: 25px 35px;
+        max-width: 540px;
+        margin: 0 auto;
     }
     .box-passw-length {
         margin-bottom: 25px;
@@ -260,103 +266,22 @@ h1 {
         font-size: calc(var(--fs-body));
         margin: 5px 0;
     }
-    /*
     .checkbox-container input {
         -webkit-appearance: none;
         border: none;
         background-color: none;
-        border: solid 2px #E6E5EA;
+        border: solid 2px var(--c-button);
         height: 20px;
         margin-right: 15px;
         width: 20px
     }
-    */
-    /*-------strength*/
-    .strength-container {
-        padding: 20px 20px;
+    .checkbox-container input[type="checkbox"]:checked {
+        content: "\2713";
+        font-size: 5px;
+        color: #000000;
+        background-color: var(--c-button);
+        border-color: var(--c-button);
     }
-    .strength-container h3 {
-        font-size: calc(var(--fs-body));
-    }
-    .strength-container strong {
-        font-size: var(--fs-heading-m);
-    }
-    #button-generate {
-        font-size: var(--fs-heading-m);
-        margin-top: 20px;
-        padding: 15px 0; 
-    }
-    #button-generate img {
-        width: 15px;
-    }
-}
-@media (min-width: 992px) {
-    body {
-        padding: 130px 115px;
-    }
-    h1 {
-        font-size: var(--fs-heading-l);
-    }
-    /*PASSWORD--------------------------------*/
-    .container-new-passw {
-        margin-bottom: 15spx;
-        padding: 25px 35px;
-    }
-    .generated-password{
-        transition: all 0.5s steps(4, jump-start);
-        font-size: var(--fs-heading-l);
-    }
-    .container-new-passw img {
-        width: 28px;
-    }
-    .copy-message {
-        font-size: calc(var(--fs-body));
-    }
-    #par-warning {
-        font-size: calc(var(--fs-body)-4);
-        margin-bottom: 15px;
-    }
-    /*PARAMETERS--------------------------------*/
-    /*-------Charcter Length*/
-    .container-parameters {
-        padding: 25px 35px;
-    }
-    .box-passw-length {
-        margin-bottom: 25px;
-    }
-    .box-passw-length h2 {
-        font-size: calc(var(--fs-body));
-    }
-    .box-passw-length span {
-        font-size: var(--fs-heading-l);
-    }
-    /*-------range input*/
-    .input-range::-webkit-slider-thumb {
-        width: 30px;
-        height: 30px;
-    }
-    .input-range::-webkit-slider-thumb:hover {
-        border: 3px solid #A4FFAF;
-    }
-    /*-------checkboxes*/
-    .checkbox-wrap {
-        padding: 30px 0;
-    }
-    .checkbox-container label {
-        font-size: calc(var(--fs-body));
-        margin: 5px 0;
-    }
-    /*
-    .checkbox-container input {
-        -webkit-appearance: none;
-        border: none;
-        background-color: none;
-        border: solid 2px #E6E5EA;
-        height: 20px;
-        margin-right: 15px;
-        width: 20px
-    }
-    */
     /*-------strength*/
     .strength-container {
         padding: 20px 20px;
