@@ -1,16 +1,24 @@
 :root {
     --c-text: #E6E5EA;
     --c-button: #A4FFAF;
+    --backg-cont: #24232B;
+
     --backg-main-top: #15141C;
     --backg-main-bottom: #08070C;
-    --backg-cont: #24232B;
+
+    --fs-body: 18px;
+    --fs-heading-m: 24px;
+    --fs-heading-l: 32px;
+
+    --ff-prim: 'Roboto Mono';
+    --ff-sec: monospace;
 }
 html {
     height: 100%;
     background: linear-gradient(var(--backg-main-top), var(--backg-main-bottom));
 }
 body {
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--ff-prim), var(--ff-sec);
     color: var(--c-text);
     padding: 25px 10px;
 }
@@ -21,9 +29,6 @@ h1 {
     text-align: center;
     margin: 20px 0;
 }
-
-
-
 /*PASSWORD--------------------------------*/
 .container-new-passw {
     align-items: center;
@@ -36,6 +41,7 @@ h1 {
 }
 .generated-password{
     transition: all 0.5s steps(4, jump-start);
+    font-size: var(--fs-heading-m);
 }
 .generated-password-color {
     color: white;
@@ -47,24 +53,20 @@ h1 {
 .container-new-passw img {
     width: 20px;
 }
-
 .copy-button img {
     vertical-align: middle;
 }
-
 .copy-message {
     color: var(--c-text);
     display: inline-block;
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--ff-prim), var(--ff-sec);
     margin: 0 20px 0 0;
     transition: opacity 0.5s steps(4, jump-start);
 }
-
 .no-display {
     opacity: 0;
     transition: opacity 0.5s steps(4, jump-start);;
 }
-
 #par-warning {
     font-size: 12px;
     text-align: center;
@@ -72,7 +74,6 @@ h1 {
     margin-bottom: 10px;
     transition: opacity 0.5s steps(4, jump-start);
 }
-
 /*PARAMETERS--------------------------------*/
 /*-------Charcter Length*/
 .container-parameters {
@@ -83,15 +84,15 @@ h1 {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .box-passw-length h2 {
     margin:0;
-    font-size: 16px;
+    font-size: calc(var(--fs-body)-2);
 }
 .box-passw-length span {
     color: var(--c-button);
-    font-size: 25px;
+    font-size: var(--fs-heading-m);
 }
 /*-------range input*/
 .input-range {
@@ -119,6 +120,9 @@ h1 {
     align-items: center;
     display: flex;
 }
+.checkbox-container label {
+    font-size: calc(var(--fs-body) - 2);
+}
 .checkbox-container input {
     margin-right: 25px;
 }
@@ -133,7 +137,6 @@ h1 {
     width: 20px
 }
 */
-
 /*-------strength*/
 .strength-container {
     align-items: center;
@@ -143,44 +146,38 @@ h1 {
     margin: auto;
     padding: 15px 10px;
 }
-
 .strength-container h3 {
     color:#53525A;
-    font-size: 16px;
+    font-size: calc(var(--fs-body) - 2);
     margin: 0;
 }
-
 .strength-container strong {
     color:#ffffff;
-    font-size: 18px;
+    font-size: var(--fs-body);
     margin: 0;
     white-space: nowrap;
 }
-
 .strenght {
     display: flex;
     justify-content: space-between;
     gap: 10px;
 }
-
 .strenght-box {
     display: flex;
     gap: 8px
 }
-
 .strenght-pow {
     border: 2px solid #ffffff;
     height: 22px;
     width: 6px;
 }
-
 #button-generate {
     align-items: center;
     background-color: #A4FFAF;
     border: 4px solid #A4FFAF;
     display: flex;
     justify-content: center;
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--ff-prim), var(--ff-sec);
     font-weight: 600;
     font-size: 20px;
     margin-top: 15px;
@@ -188,19 +185,16 @@ h1 {
     width: 100%;
     transition: all 0.3s steps(4, jump-start);
 }
-
 #button-generate:hover {
     color: white;
     background-color: #24232B;
     border: 4px solid #A4FFAF;
     transition: all 0.3s steps(4, jump-start);
 }
-
 #button-generate:hover img {
     filter: invert(100%);
     transition: all 0.3s steps(4, jump-start);
 }
-
 #button-generate img {
     margin-top: 3px;
     margin-left: 15px;
@@ -208,8 +202,177 @@ h1 {
     transition: all 0.3s steps(4, jump-start);
 }
 
+
+
 @media (min-width: 768px) {
+    body {
+        padding: 130px 115px;
+    }
     h1 {
-        font-size: 20px;
+        font-size: var(--fs-heading-l);
+    }
+    /*PASSWORD--------------------------------*/
+    .container-new-passw {
+        margin-bottom: 15spx;
+        padding: 25px 35px;
+    }
+    .generated-password{
+        transition: all 0.5s steps(4, jump-start);
+        font-size: var(--fs-heading-l);
+    }
+    .container-new-passw img {
+        width: 28px;
+    }
+    .copy-message {
+        font-size: calc(var(--fs-body));
+    }
+    #par-warning {
+        font-size: calc(var(--fs-body)-4);
+        margin-bottom: 15px;
+    }
+    /*PARAMETERS--------------------------------*/
+    /*-------Charcter Length*/
+    .container-parameters {
+        padding: 25px 35px;
+    }
+    .box-passw-length {
+        margin-bottom: 25px;
+    }
+    .box-passw-length h2 {
+        font-size: calc(var(--fs-body));
+    }
+    .box-passw-length span {
+        font-size: var(--fs-heading-l);
+    }
+    /*-------range input*/
+    .input-range::-webkit-slider-thumb {
+        width: 30px;
+        height: 30px;
+    }
+    .input-range::-webkit-slider-thumb:hover {
+        border: 3px solid #A4FFAF;
+    }
+    /*-------checkboxes*/
+    .checkbox-wrap {
+        padding: 30px 0;
+    }
+    .checkbox-container label {
+        font-size: calc(var(--fs-body));
+        margin: 5px 0;
+    }
+    /*
+    .checkbox-container input {
+        -webkit-appearance: none;
+        border: none;
+        background-color: none;
+        border: solid 2px #E6E5EA;
+        height: 20px;
+        margin-right: 15px;
+        width: 20px
+    }
+    */
+    /*-------strength*/
+    .strength-container {
+        padding: 20px 20px;
+    }
+    .strength-container h3 {
+        font-size: calc(var(--fs-body));
+    }
+    .strength-container strong {
+        font-size: var(--fs-heading-m);
+    }
+    #button-generate {
+        font-size: var(--fs-heading-m);
+        margin-top: 20px;
+        padding: 15px 0; 
+    }
+    #button-generate img {
+        width: 15px;
+    }
+}
+@media (min-width: 992px) {
+    body {
+        padding: 130px 115px;
+    }
+    h1 {
+        font-size: var(--fs-heading-l);
+    }
+    /*PASSWORD--------------------------------*/
+    .container-new-passw {
+        margin-bottom: 15spx;
+        padding: 25px 35px;
+    }
+    .generated-password{
+        transition: all 0.5s steps(4, jump-start);
+        font-size: var(--fs-heading-l);
+    }
+    .container-new-passw img {
+        width: 28px;
+    }
+    .copy-message {
+        font-size: calc(var(--fs-body));
+    }
+    #par-warning {
+        font-size: calc(var(--fs-body)-4);
+        margin-bottom: 15px;
+    }
+    /*PARAMETERS--------------------------------*/
+    /*-------Charcter Length*/
+    .container-parameters {
+        padding: 25px 35px;
+    }
+    .box-passw-length {
+        margin-bottom: 25px;
+    }
+    .box-passw-length h2 {
+        font-size: calc(var(--fs-body));
+    }
+    .box-passw-length span {
+        font-size: var(--fs-heading-l);
+    }
+    /*-------range input*/
+    .input-range::-webkit-slider-thumb {
+        width: 30px;
+        height: 30px;
+    }
+    .input-range::-webkit-slider-thumb:hover {
+        border: 3px solid #A4FFAF;
+    }
+    /*-------checkboxes*/
+    .checkbox-wrap {
+        padding: 30px 0;
+    }
+    .checkbox-container label {
+        font-size: calc(var(--fs-body));
+        margin: 5px 0;
+    }
+    /*
+    .checkbox-container input {
+        -webkit-appearance: none;
+        border: none;
+        background-color: none;
+        border: solid 2px #E6E5EA;
+        height: 20px;
+        margin-right: 15px;
+        width: 20px
+    }
+    */
+    /*-------strength*/
+    .strength-container {
+        padding: 20px 20px;
+    }
+    .strength-container h3 {
+        font-size: calc(var(--fs-body));
+    }
+    .strength-container strong {
+        font-size: var(--fs-heading-m);
+    }
+    #button-generate {
+        font-size: var(--fs-heading-m);
+        margin-top: 20px;
+        padding: 15px 0; 
+    }
+    #button-generate img {
+        width: 15px;
     }
 }
